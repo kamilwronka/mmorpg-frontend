@@ -8,12 +8,12 @@ interface FrameRow {
 }
 
 export class Player {
-  public static readonly SPRITE_FRAME_WIDTH = 52;
-  public static readonly SPRITE_FRAME_HEIGHT = 72;
-  public static readonly SCALE_FACTOR = 1.5;
+  public static readonly SPRITE_FRAME_WIDTH = 32;
+  public static readonly SPRITE_FRAME_HEIGHT = 48;
+  public static readonly SCALE_FACTOR = 1;
 
-  private static readonly CHARS_IN_ROW = 4;
-  private static readonly FRAMES_PER_CHAR_ROW = 3;
+  private static readonly CHARS_IN_ROW = 1;
+  private static readonly FRAMES_PER_CHAR_ROW = 4;
   private static readonly FRAMES_PER_CHAR_COL = 4;
   private directionToFrameRow: { [key in Direction]?: number } = {
     [Direction.DOWN]: 0,
@@ -21,11 +21,12 @@ export class Player {
     [Direction.RIGHT]: 2,
     [Direction.UP]: 3,
   };
+  private movePath: Phaser.Math.Vector2[] = [];
+  private moveToTarget?: Phaser.Math.Vector2;
 
   public lastFootLeft = false;
   constructor(
     private sprite: Phaser.GameObjects.Sprite,
-    private characterIndex: number,
     startTilePosX: number,
     startTilePosY: number
   ) {
@@ -63,7 +64,7 @@ export class Player {
     const x =
       (this.sprite.getCenter().x - this.playerOffsetX()) / GameScene.TILE_SIZE;
     const y =
-      (this.sprite.getCenter().y - this.playerOffsetY()) / GameScene.TILE_SIZE;
+      (this.sprite.getCenter().y + this.playerOffsetY()) / GameScene.TILE_SIZE;
     return new Phaser.Math.Vector2(Math.floor(x), Math.floor(y));
   }
 
@@ -87,20 +88,20 @@ export class Player {
   }
 
   private framesOfDirection(direction: Direction): FrameRow {
-    const playerCharRow = Math.floor(this.characterIndex / Player.CHARS_IN_ROW);
-    const playerCharCol = this.characterIndex % Player.CHARS_IN_ROW;
+    const playerCharRow = 0;
+    const playerCharCol = 0;
     const framesInRow = Player.CHARS_IN_ROW * Player.FRAMES_PER_CHAR_ROW;
     const framesInSameRowBefore = Player.FRAMES_PER_CHAR_ROW * playerCharCol;
     // @ts-nocheck
     const rows =
-    // @ts-expect-error: ignore
+      // @ts-expect-error: ignore
       this.directionToFrameRow[direction] +
       playerCharRow * Player.FRAMES_PER_CHAR_COL;
     const startFrame = framesInSameRowBefore + rows * framesInRow;
     return {
-      leftFoot: startFrame,
-      standing: startFrame + 1,
-      rightFoot: startFrame + 2,
+      leftFoot: startFrame + 1,
+      standing: startFrame + 2,
+      rightFoot: startFrame + 3,
     };
   }
 }

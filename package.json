@@ -10,6 +10,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "pathfinding": "^0.4.18",
     "phaser": "^3.23.0",
     "phaser-tiled-json-external-loader": "^0.1.1",
     "react": "^17.0.1",
@@ -41,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/pathfinding": "^0.0.4"
   }
 }

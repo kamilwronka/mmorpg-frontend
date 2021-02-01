@@ -40,20 +40,20 @@ export class GridPhysics {
   }
 
   private isMoving(): boolean {
-    return this.movementDirection != Direction.NONE;
+    return this.movementDirection !== Direction.NONE;
   }
 
   private startMoving(direction: Direction): void {
     this.movementDirection = direction;
   }
 
-  
   private tilePosInDirection(direction: Direction): Vector2 {
-    
-    return this.player
-      .getTilePos()
-      // @ts-expect-error: ignore
-      .add(this.movementDirectionVectors[direction]);
+    return (
+      this.player
+        .getTilePos()
+        // @ts-expect-error: ignore
+        .add(this.movementDirectionVectors[direction])
+    );
   }
 
   private isBlockingDirection(direction: Direction): boolean {
@@ -61,17 +61,19 @@ export class GridPhysics {
   }
 
   private hasNoTile(pos: Vector2): boolean {
-    return !this.tileMap.layers.some((layer) =>
-      this.tileMap.hasTileAt(pos.x, pos.y, layer.name)
-    );
+    return !this.tileMap.hasTileAt(pos.x, pos.y, this.tileMap.layers[1].name);
   }
 
   private hasBlockingTile(pos: Vector2): boolean {
     if (this.hasNoTile(pos)) return true;
-    return this.tileMap.layers.some((layer) => {
-      const tile = this.tileMap.getTileAt(pos.x, pos.y, false, layer.name);
-      return tile && tile.properties.collides;
-    });
+    const tileAtPosition = this.tileMap.getTileAt(
+      pos.x,
+      pos.y,
+      false,
+      this.tileMap.layers[1].name
+    );
+
+    return tileAtPosition && tileAtPosition.properties.collides;
   }
 
   private updatePlayerPosition(delta: number): void {
@@ -143,9 +145,9 @@ export class GridPhysics {
   private stopMoving(): void {
     this.movementDirection = Direction.NONE;
   }
-// @ts-expect-error: ignore
+  // @ts-expect-error: ignore
   private movementDistance(speed): Vector2 {
-      // @ts-expect-error: ignore
+    // @ts-expect-error: ignore
     return this.movementDirectionVectors[this.movementDirection]
       .clone()
       .multiply(new Vector2(speed));

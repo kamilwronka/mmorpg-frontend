@@ -7,8 +7,74 @@
 }
 
 .game-container {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
+}
+
+.left_bar-container {
+  position: absolute;
+  left: 0;
+  top: 5vh;
+  height: 90vh;
+  width: 250px;
+  background-color: green;
+}
+
+.right_bar-container {
+  position: absolute;
+  right: 0;
+  top: 5vh;
+  height: 90vh;
+  width: 250px;
+  background-color: green;
+}
+
+.top_bar-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 5vh;
+  width: 100vw;
+  background-color: aqua;
+}
+
+.bottom_bar-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 5vh;
+  width: 100vw;
+  background-color: cyan;
+}
+
+.inventory-container {
+  height: 30%;
+  width: 250px;
+  background: red;
+}
+
+.stats-container {
+  height: 200px;
+  width: 250px;
+  background: blue;
+}
+
+.equipment-container {
+  height: 200px;
+  width: 250px;
+  background: yellow;
+}
+
+.experience_bar-container {
+  height: 40px;
+  width: 250px;
+  background: gold;
+}
+
+.healthbar-container {
+  height: 40px;
+  width: 250px;
+  background: red;
 }
 
 @media (prefers-reduced-motion: no-preference) {
