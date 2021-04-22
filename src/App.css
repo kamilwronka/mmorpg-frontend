@@ -1,0 +1,108 @@
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  width: 90%;
+  height: 90%;
+}
+
+.left_bar-container {
+  position: absolute;
+  left: 0;
+  top: 5vh;
+  height: 90vh;
+  width: 250px;
+  background-color: green;
+}
+
+.right_bar-container {
+  position: absolute;
+  right: 0;
+  top: 5vh;
+  height: 90vh;
+  width: 250px;
+  background-color: green;
+}
+
+.top_bar-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 5vh;
+  width: 100vw;
+  background-color: aqua;
+}
+
+.bottom_bar-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 5vh;
+  width: 100vw;
+  background-color: cyan;
+}
+
+.inventory-container {
+  height: 30%;
+  width: 250px;
+  background: red;
+}
+
+.stats-container {
+  height: 200px;
+  width: 250px;
+  background: blue;
+}
+
+.equipment-container {
+  height: 200px;
+  width: 250px;
+  background: yellow;
+}
+
+.experience_bar-container {
+  height: 40px;
+  width: 250px;
+  background: gold;
+}
+
+.healthbar-container {
+  height: 40px;
+  width: 250px;
+  background: red;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

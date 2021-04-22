@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Spider",
+        "id": "pajak",
+        "x": 4,
+        "y": 23,
+        "level": "1"
+    },
+    {
+        "name": "Spider",
+        "id": "pajak",
+        "x": 8,
+        "y": 26,
+        "level": "1"
+    }
+]
